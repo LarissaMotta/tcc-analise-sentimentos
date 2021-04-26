@@ -28,9 +28,7 @@ def training(df, df2, df3):
         print("CPU")
 
     # instanciando o modelo e os hiperparametros
-    #TODO get max frequence add 1 to insert on network
-    # n_vocab = len(dic_freq) + 1
-    n_vocab = 5720
+    n_vocab = max(dic_freq.values()) + 1
     n_embed = 300
     n_hidden = 512
     n_output = 1  # 1 ("positive") or 0 ("negative")

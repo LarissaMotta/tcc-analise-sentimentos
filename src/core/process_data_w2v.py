@@ -109,12 +109,15 @@ def process_data_w2v(df, df2, df3):
     delete_w2v(word2vec)
 
     # Aplicando a tokenização do texto
-    seq_length = 20
-    df.Vetores = df.Vetores.apply(lambda x: util.pad_vec_tweet(x))
-    df2.Vetores = df2.Vetores.apply(lambda x: util.pad_vec_tweet(x))
-    df3.Vetores = df3.Vetores.apply(lambda x: util.pad_vec_tweet(x))
+    seq_length = 17
+    df.Vetores = df.Vetores.apply(lambda x: util.pad_vec_tweet(x, seq_length))
+    df2.Vetores = df2.Vetores.apply(lambda x: util.pad_vec_tweet(x, seq_length))
+    df3.Vetores = df3.Vetores.apply(lambda x: util.pad_vec_tweet(x, seq_length))
 
-    return matrix_embedding, df, df2, df3
+    # with open(imports.DATAS_PATH + "/mt_emb.txt", "w") as output:
+    #     output.write(str(matrix_embedding))
+
+    return matrix_embedding, df, df2, df3, seq_length
 
 
 class EmptyWord2Vec:

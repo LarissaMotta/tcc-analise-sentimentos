@@ -1,8 +1,18 @@
 import torch
 from torch.utils.data import TensorDataset, DataLoader
+import pandas as pd
 import numpy as np
 import re
-# from string import punctuation
+import nltk
+
+
+# download dependencias de processamento de texto
+def loading_dependences():
+    nltk.download('wordnet')
+    nltk.download('averaged_perceptron_tagger')
+    nltk.download('punkt')
+    nltk.download('stopwords')
+    return 0
 
 
 def get_input_loader(df, batch_size=1):
@@ -59,18 +69,71 @@ def texto_para_lista_palavras(text):
 # deixando os vetores com mesmo tamanho
 def pad_vec_tweet(tweet, seq_length=20):
     retorno = []
-    if len(tweet) >= seq_length:
+    if tweet != np.nan and len(tweet) >= seq_length:
         retorno = tweet[:seq_length]
     else:
         retorno = [0] * (seq_length - len(tweet)) + tweet
     return retorno
 
 
-# def preprocess(text):
-#     text = text.lower()
-#     text = "".join([ch for ch in text if ch not in punctuation])
-#     all_reviews = text.split("\n")
-#     text = " ".join(all_reviews)
-#     all_words = text.split()
-#
-#     return all_reviews, all_words
+def clean_datas(df_p, df_n):
+    # remove os na
+    df_p = df_p.dropna()
+    df_n = df_n.dropna()
+    # balanceia os dados
+    df_p, df_n = get_data_balanced(df_p, df_n)
+    # separa os dados de treinamento, validacao e teste
+    df1_p, df2_p, df3_p = get_cut_data(df_p)
+    df1_n, df2_n, df3_n = get_cut_data(df_n)
+
+    df = pd.merge(df1_p, df1_n, how='outer')
+    df2 = pd.merge(df2_p,df2_n, how='outer')
+    df3 = pd.merge(df3_p, df3_n, how='outer')
+
+    return df, df2, df3
+
+
+def equal_data(df, df2):
+    if len(df) > len(df2):
+        df = df.iloc[:len(df2)]
+    else:
+        df2 = df2.iloc[:len(df)]
+    return df, df2
+
+
+def get_data_balanced(df, df2, div=100):
+    # pegando o menor tamanho entre os dataframes
+    cut_len = min(len(df), len(df2))
+    # deixando o corte divisivel pelo parametro passado
+    cut_len = cut_len - (cut_len % div)
+    # cortando os dataframes
+    df = df.iloc[:cut_len]
+    df2 = df2.iloc[:cut_len]
+
+    return df, df2
+
+
+def get_cut_data(df_):
+    train_len = int(len(df_) * 0.8)
+    valid_len = int(len(df_) * 0.1)
+
+    df1 = df_.iloc[:train_len]
+    df2 = df_.iloc[train_len: (train_len + valid_len)]
+    df3 = df_.iloc[(train_len + valid_len):]
+
+    return df1, df2, df3
+
+
+def pre_process_tweet(text):
+    # remove URLs
+    text = re.sub("((www\.[^\s]+)|(https?://[^\s]+)|(http?://[^\s]+))", "", text)
+    text = re.sub(r'http\S+', '', text)
+    # remove usernames
+    text = re.sub('@[^\s]+', '', text)
+    # remove all #
+    text = re.sub(r'#([^\s]+)', '', text)
+    # remove
+    text = re.sub(r"[^\w\s]", " ", text)
+
+    return text.split()
+

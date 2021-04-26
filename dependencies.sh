@@ -11,9 +11,6 @@ pip3 install pandas
 # scikit-learn
 pip3 install scikit-learn
 
-# tensorflow - maybe i will need a setuptools with higher version
-pip3 install tensorflow
-
 # gensim
 pip3 install gensim==3.6.0
 
@@ -22,6 +19,11 @@ pip3 install nltk==3.2.5
 
 pip3 install torch==1.8.1+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 
+# matplolib
+pip3 install matplotlib
+
+#seabons
+pip3 install seaborn
 
 echo "\n"
 echo "The packages has been successfully installed:"

@@ -15,8 +15,9 @@ class SentimentLSTM(nn.Module):
 
         self.lstm = nn.LSTM(n_embed, n_hidden, n_layers, batch_first=True, dropout=drop_p)
         self.dropout = nn.Dropout(drop_p)
-        self.fc = nn.Linear(n_hidden, n_output)
-        self.sigmoid = nn.Sigmoid()
+        self.fc = nn.Linear(n_hidden, n_output, bias=True)
+        # self.sigmoid = nn.Sigmoid()
+        self.relu = nn.ReLU()
 
     def forward(self, x, hidden):
         """
@@ -35,7 +36,8 @@ class SentimentLSTM(nn.Module):
         out = self.dropout(lstm_out)
         out = self.fc(out)
         # sigmoid function
-        sig_out = self.sigmoid(out)
+        # sig_out = self.sigmoid(out)
+        sig_out = self.relu(out)
 
         # reshape to be batch_size first
         sig_out = sig_out.view(batch_size, -1)
