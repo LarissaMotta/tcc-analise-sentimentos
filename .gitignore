@@ -131,5 +131,5 @@ dmypy.json
 .idea
 
 # Removing compact files
-src/datas/w2v/*.bin.gz
-# src/data/*.h5
+src/datas/
+src/*.h5
