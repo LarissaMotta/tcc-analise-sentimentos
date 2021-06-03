@@ -3,12 +3,15 @@ import os
 SRC_PATH = os.path.dirname(os.path.abspath("src"))
 DATAS_PATH = SRC_PATH + "/datas"
 
+# ARQUIVO DE RESULTADO
+RESULT_PATH = DATAS_PATH + "/resultados/results.csv"
 
 ## COM STOPWORD
 
 MATRIX_EMBEDDING = DATAS_PATH + '/process_data_25/matrix_embedding_25.npy'
 POSITIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_25/process_data_pos_25.csv"
 NEGATIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_25/process_data_neg_25.csv"
+GRAPHIC_TRAIN = DATAS_PATH + '/figures/figure_'
 
 
 # MATRIX_EMBEDDING = DATAS_PATH + '/process_data_1/matrix_embedding_1.npy'

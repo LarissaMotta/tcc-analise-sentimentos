@@ -1,9 +1,11 @@
-import matplotlib.pyplot as plt
+from time import time
 import tensorflow as tf
+import matplotlib.pyplot as plt
+import src.utils.import_util as imports
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Embedding, LSTM, Dropout, Activation, Dense, GRU
 from tensorflow.python.keras.regularizers import l2
-from time import time
+
 
 
 def training(df, df2, matrix_embedding, seq_length, hyperparams):
@@ -78,9 +80,8 @@ def training(df, df2, matrix_embedding, seq_length, hyperparams):
     plt.legend(['Train', 'Validation'], loc='upper right')
 
     plt.tight_layout(h_pad=1.0)
-    plt.savefig('history-graph.png')
-    plt.show()
+    date = hyperparams.date_now.replace('/', '').replace(':', '').replace(' ', '_')
+    plt.savefig(imports.GRAPHIC_TRAIN + date + '.png')
+    # plt.show()
 
     return net, batch_size
-
-
