@@ -7,20 +7,16 @@ from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_
 # hiperparametros, net, pred
 def save_results(model, train, pred, df_test):
     # Adicionando os dados do modelo de hiperparametro
-    lst = [model.date_now, model.n_hidden, model.lr, model.drop_p, model.n_epochs, model.batch_size,
-                model.len_train, model.len_valid, model.n_embedding]
-
-    # Adicionando dados de treinamento
-    lst.append(model.acc_train)
-    lst.append(model.acc_valid)
-    lst.append(model.loss_train)
-    lst.append(model.loss_valid)
+    lst = [model.date_now, model.n_hidden, model.lr, model.drop_1, model.initializer, model.drop_recurrent,
+           model.activation, model.loss, model.optimizer, model.n_epochs, model.batch_size, model.len_train,
+           model.len_valid, model.n_embedding, model.acc_train, model.acc_valid, model.loss_train, model.loss_valid]
 
     # Adicionando dados de previsao
     lst = lst + __get_values_pred(pred, df_test)
 
     # Adicionando dado da embedding
     lst.append(imports.MATRIX_EMBEDDING)
+
 
     # Salvando os dados no arquivo
     with open(imports.RESULT_PATH, 'a') as outfile:

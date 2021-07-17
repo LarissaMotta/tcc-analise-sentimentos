@@ -29,6 +29,9 @@ pip3 install tensorflow==2.4.1
 # tensorflow extensions
 pip3 install tensorflow-addons
 
+# Para plotar imagem da estrutura da rede neural
+pip install pydot
+
 echo "\n"
 echo "The packages has been successfully installed:"
 pip3 list
