@@ -7,7 +7,7 @@ class hiperparams:
         self.rho = 0.95
         self.drop_1 = 0.14
         self.drop_recurrent = 0.47
-        self.n_epochs = 40
+        self.n_epochs = 15
         self.batch_size = 16
         self.len_train = 0.70
         self.len_valid = 0.10

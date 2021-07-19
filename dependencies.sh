@@ -1,7 +1,3 @@
-# pip
-sudo apt install python3-pip
-pip3 install --upgrade pip
-
 # numpy
 pip3 install numpy
 
@@ -24,7 +20,8 @@ pip3 install matplotlib
 pip3 install seaborn
 
 # tensorflow - maybe i will need a setuptools with higher version
-pip3 install tensorflow==2.4.1
+pip3 install tensorflow==2.5.0
+pip3 install --upgrade tensorflow-gpu
 
 # tensorflow extensions
 pip3 install tensorflow-addons
