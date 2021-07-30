@@ -18,10 +18,15 @@ GRAPHIC_TRAIN = DATAS_PATH + '/figures/figure_'
 # POSITIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_1/process_data_pos_1_13.csv"
 # NEGATIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_1/process_data_neg_1_13.csv"
 
+SEQ_LENGTH = 14
+MATRIX_EMBEDDING = DATAS_PATH + '/process_data_0/matrix_embedding_0_14.npy'
+POSITIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_0/process_data_pos_0_14.csv"
+NEGATIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_0/process_data_neg_0_14.csv"
+###COM EMBEDDING DA GOOGLE
 # SEQ_LENGTH = 14
-# MATRIX_EMBEDDING = DATAS_PATH + '/process_data_0/matrix_embedding_0_14.npy'
-# POSITIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_0/process_data_pos_0_14.csv"
-# NEGATIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_0/process_data_neg_0_14.csv"
+# MATRIX_EMBEDDING = DATAS_PATH + '/process_data_0/matrix_embedding_0_300.npy'
+# POSITIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_0/process_data_pos_0_300.csv"
+# NEGATIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_0/process_data_neg_0_300.csv"
 
 
 ## COM STOPWORD E LEMATIZAÇÃO
@@ -35,10 +40,10 @@ GRAPHIC_TRAIN = DATAS_PATH + '/figures/figure_'
 # POSITIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_sw_lm_1/process_data_pos_1_13.csv"
 # NEGATIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_sw_lm_1/process_data_neg_1_13.csv"
 
-SEQ_LENGTH = 12
-MATRIX_EMBEDDING = DATAS_PATH + '/process_data_sw_lm_2/matrix_embedding_2_12.npy'
-POSITIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_sw_lm_2/process_data_pos_2_12.csv"
-NEGATIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_sw_lm_2/process_data_neg_2_12.csv"
+# SEQ_LENGTH = 12
+# MATRIX_EMBEDDING = DATAS_PATH + '/process_data_sw_lm_2/matrix_embedding_2_12.npy'
+# POSITIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_sw_lm_2/process_data_pos_2_12.csv"
+# NEGATIVE_TWEETS_PATH_PROCESS = DATAS_PATH + "/process_data_sw_lm_2/process_data_neg_2_12.csv"
 
 
 
