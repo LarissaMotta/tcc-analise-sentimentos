@@ -14,21 +14,23 @@ import src.utils.import_util as imports
 def main():
     # obtendo os hiperparametros setados
     model = params.hiperparams()
+    # criando um dicionario com as partições
     dic_part = {'first': {'train': 0.7, 'valid': 0.15},
                 'second': {'train': 0.8, 'valid': 0.1}}
+    # criando dicionario relativo as base de dados
     dic_database = {'zero': {'seq_length': 14, 'cut': 0},
                     'one': {'seq_length': 13, 'cut': 1},
                     'two': {'seq_length': 12, 'cut': 2}}
 
-    # execute(model)
-
+    # iniciando logica para rodar todos os experimentos
+    # primeiro um loop das particoes 70 15 15 e 80 10 10
     for particao in dic_part.values():
         model.len_train = particao['train']
         model.len_valid = particao['valid']
-
+        # depois um loop nos datasets ( corte 0, corte 0,1 e corte 0,2)
         for dado in dic_database.values():
             __set_path_files(dado, particao)
-
+            # finalmente um loop de 20 vezes executando treinamento e predicao para cada caso
             for i in range(20):
                 execute(model)
 
