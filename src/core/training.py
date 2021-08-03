@@ -18,18 +18,7 @@ def training(df, df2, matrix_embedding, seq_length, hyperparams):
     model = Sequential()
     model.add(Embedding(len(matrix_embedding), hyperparams.n_embedding, weights=[matrix_embedding], input_length=seq_length))
     model.add(Dropout(hyperparams.drop_1))
-    #LSTM com
-    # model.add(LSTM(units=hyperparams.n_hidden,
-    #                activation='tanh', recurrent_activation='sigmoid',
-    #                use_bias=True, kernel_initializer='glorot_uniform',
-    #                recurrent_initializer='orthogonal',
-    #                bias_initializer='zeros', unit_forget_bias=True,
-    #                kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None,
-    #                activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None,
-    #                bias_constraint=None, dropout=0.0, recurrent_dropout=hyperparams.drop_p,
-    #                return_sequences=False, return_state=False, go_backwards=False, stateful=False,
-    #                time_major=False, unroll=False
-    #                ))
+
     if hyperparams.initializer == 'xavier':
         initializer = tf.keras.initializers.glorot_normal(seed=1)
     else:
@@ -41,7 +30,6 @@ def training(df, df2, matrix_embedding, seq_length, hyperparams):
                    dropout=0.0, recurrent_dropout=hyperparams.drop_recurrent,
                    implementation=1
                    ))
-
 
     model.add(Activation(hyperparams.activation))
     model.add(Dense(1, activation='sigmoid'))
@@ -65,26 +53,26 @@ def training(df, df2, matrix_embedding, seq_length, hyperparams):
     model.save('LSTM.h5')
 
     # Plot accuracy
-    plt.subplot(211)
-    plt.plot(net.history['accuracy'])
-    plt.plot(net.history['val_accuracy'])
-    plt.title('Accuracy' + ' LSTM: opt=' + str(hyperparams.optimizer) + ' lr=' + str(hyperparams.lr))
-    plt.ylabel('Accuracy')
-    plt.xlabel('Epoch')
-    plt.legend(['Train', 'Validation'], loc='upper left')
-
-    # Plot loss
-    plt.subplot(212)
-    plt.plot(net.history['loss'])
-    plt.plot(net.history['val_loss'])
-    plt.title('Loss' + ' LSTM: loss=' + str(hyperparams.loss))
-    plt.ylabel('Loss')
-    plt.xlabel('Epoch')
-    plt.legend(['Train', 'Validation'], loc='upper right')
-
-    plt.tight_layout(h_pad=1.0)
-    date = hyperparams.date_now.replace('/', '').replace(':', '').replace(' ', '_')
-    plt.savefig(imports.GRAPHIC_TRAIN + date + '.png')
+    # plt.subplot(211)
+    # plt.plot(net.history['accuracy'])
+    # plt.plot(net.history['val_accuracy'])
+    # plt.title('Accuracy' + ' LSTM: opt=' + str(hyperparams.optimizer) + ' lr=' + str(hyperparams.lr))
+    # plt.ylabel('Accuracy')
+    # plt.xlabel('Epoch')
+    # plt.legend(['Train', 'Validation'], loc='upper left')
+    #
+    # # Plot loss
+    # plt.subplot(212)
+    # plt.plot(net.history['loss'])
+    # plt.plot(net.history['val_loss'])
+    # plt.title('Loss' + ' LSTM: loss=' + str(hyperparams.loss))
+    # plt.ylabel('Loss')
+    # plt.xlabel('Epoch')
+    # plt.legend(['Train', 'Validation'], loc='upper right')
+    #
+    # plt.tight_layout(h_pad=1.0)
+    # date = hyperparams.date_now.replace('/', '').replace(':', '').replace(' ', '_')
+    # plt.savefig(imports.GRAPHIC_TRAIN + date + '.png')
     # plt.show()
 
     return net, batch_size
@@ -106,5 +94,4 @@ def __get_optimizer(hyperparams):
     elif hyperparams.optimizer == 'adadelta':
         return tf.keras.optimizers.Adadelta(learning_rate=hyperparams.lr, rho=hyperparams.rho,
                                             epsilon=1e-07, name='Adadelta', clipnorm=1.5)
-
 

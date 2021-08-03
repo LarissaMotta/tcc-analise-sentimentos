@@ -1,3 +1,4 @@
+import os
 import csv
 import pandas as pd
 import src.utils.import_util as imports
@@ -9,7 +10,7 @@ def save_results(model, train, pred, df_test):
     # Adicionando os dados do modelo de hiperparametro
     lst = [model.date_now, model.n_hidden, model.lr, model.drop_1, model.initializer, model.drop_recurrent,
            model.activation, model.loss, model.optimizer, model.n_epochs, model.batch_size, model.len_train,
-           model.len_valid, model.n_embedding, model.acc_train, model.acc_valid, model.loss_train, model.loss_valid]
+           model.len_valid]
 
     # Adicionando dados de previsao
     lst = lst + __get_values_pred(pred, df_test)
@@ -19,9 +20,7 @@ def save_results(model, train, pred, df_test):
 
 
     # Salvando os dados no arquivo
-    with open(imports.RESULT_PATH, 'a') as outfile:
-        file = csv.writer(outfile)
-        file.writerow(lst)
+    insert_informations_file(lst, imports.RESULT_PATH)
     return
 
 
@@ -66,4 +65,21 @@ def __get_values_pred(pred, df3):
     iou = tp / (tp + fp + fn)
     print('IoU: ', iou)
 
-    return [accuracy, cf, precision, recall, f1, iou]
+    return [accuracy, tn, fp, fn, tp, precision, recall, f1, iou]
+
+
+def save_infos_train_valid(net):
+    insert_informations_file(net.history['accuracy'], imports.ACC_TRAIN_PATH)
+    insert_informations_file(net.history['val_accuracy'], imports.ACC_VALID_PATH)
+    insert_informations_file(net.history['loss'], imports.LOSS_TRAIN_PATH)
+    insert_informations_file(net.history['val_loss'], imports.LOSS_VALID_PATH)
+
+
+def insert_informations_file(lst, file):
+    append_write = 'a' if os.path.exists(file) else 'w'
+
+    with open(file, append_write) as outfile:
+        file = csv.writer(outfile)
+        file.writerow(lst)
+    return
+
