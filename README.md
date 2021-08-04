@@ -1,5 +1,5 @@
  # Trabalho de Conclusão de Curso
-##Análise de Sentimentos em Tweets sobre a Pandemia COVID-19 usando Redes Neurais Long Short-Term Memory
+## Análise de Sentimentos em Tweets sobre a Pandemia COVID-19 usando Redes Neurais Long Short-Term Memory
 
 Para compilação do código é necessário a intalação das dependências contidas no arquivo **dependencies.sh**.
 
