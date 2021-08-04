@@ -4,7 +4,7 @@ import src.core.testing as testing
 import src.utils.df_util as df_util
 import src.models.hiperparametros as params
 import src.utils.results_util as results_util
-import src.utils.model_util as model_util
+import src.utils.graphic_util as graphic_util
 
 
 # Press Shift+F10 to execute it or replace it with your code.
@@ -12,12 +12,11 @@ import src.utils.model_util as model_util
 
 
 def main():
-    # rho = [0.9, 0.95, 0.97, 0.99]
+    # criando a nuvem de adjetivos
+    graphic_util.create_adjetives_cloud()
     # obtendo os hiperparametros setados
-    model_util.get_activation_function()
-    # hp.try_hyperas()
-    model = params.hiperparams()
-    execute(model)
+    # model = params.hiperparams()
+    # execute(model)
     return 0
 
 

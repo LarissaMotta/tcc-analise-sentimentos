@@ -29,6 +29,12 @@ pip3 install tensorflow-addons
 # Para plotar imagem da estrutura da rede neural
 pip install pydot
 
+# nltk
+pip3 install nltk==3.2.5
+
+# Para plotar a nuvem de adjetivos
+pip3 install stylecloud
+
 echo "\n"
 echo "The packages has been successfully installed:"
 pip3 list
