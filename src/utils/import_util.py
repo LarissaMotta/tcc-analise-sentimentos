@@ -6,6 +6,7 @@ DATAS_PATH = SRC_PATH + "/datas"
 # ARQUIVO DE RESULTADO
 RESULT_PATH = DATAS_PATH + "/resultados/results.csv"
 GRAPHIC_TRAIN = DATAS_PATH + '/figures/figure_'
+RESULT_EXPERIMENT = DATAS_PATH + "/results_experiment/"
 
 # Para substituição no for
 SEQ_LENGTH_BASE = 14
@@ -13,11 +14,14 @@ MATRIX_EMBEDDING_BASE = DATAS_PATH + '/process_data_{0}/matrix_embedding_{0}_{1}
 POSITIVE_TWEETS_PATH_PROCESS_BASE = DATAS_PATH + "/process_data_{0}/process_data_pos_{0}_{1}.csv"
 NEGATIVE_TWEETS_PATH_PROCESS_BASE = DATAS_PATH + "/process_data_{0}/process_data_neg_{0}_{1}.csv"
 
-ACC_TRAIN_PATH_BASE = DATAS_PATH + "/results_experiment/acc_train_{0}_{1}.csv"
-ACC_VALID_PATH_BASE = DATAS_PATH + "/results_experiment/acc_valid_{0}_{1}.csv"
-LOSS_TRAIN_PATH_BASE = DATAS_PATH + "/results_experiment/loss_train_{0}_{1}.csv"
-LOSS_VALID_PATH_BASE = DATAS_PATH + "/results_experiment/loss_valid_{0}_{1}.csv"
-METRIC_PATH_BASE = DATAS_PATH + "/results_experiment/metrics_{0}_{1}.csv"
+ACC_TRAIN_PATH_BASE = RESULT_EXPERIMENT + "acc_train_{0}_{1}.csv"
+ACC_VALID_PATH_BASE = RESULT_EXPERIMENT + "acc_valid_{0}_{1}.csv"
+LOSS_TRAIN_PATH_BASE = RESULT_EXPERIMENT + "loss_train_{0}_{1}.csv"
+LOSS_VALID_PATH_BASE = RESULT_EXPERIMENT + "loss_valid_{0}_{1}.csv"
+METRIC_PATH_BASE = RESULT_EXPERIMENT + "metrics_{0}_{1}.csv"
+GRAPHIC_TRAIN_BASE = RESULT_EXPERIMENT + "graphic/graphic_train_valid_{0}_{1}.png"
+MATRIX_CONFUSION_BASE = RESULT_EXPERIMENT + "graphic/confusion_matrix_{0}_{1}.png"
+
 
 SEQ_LENGTH = 14
 MATRIX_EMBEDDING = ''
@@ -28,6 +32,8 @@ ACC_VALID_PATH = ''
 LOSS_TRAIN_PATH = ''
 LOSS_VALID_PATH = ''
 RESULT_PATH = ''
+MATRIX_CONFUSION = ''
+
 
 ## COM STOPWORD
 # SEQ_LENGTH = 12

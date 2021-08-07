@@ -5,6 +5,7 @@ import src.utils.df_util as df_util
 import src.models.hiperparametros as params
 import src.utils.results_util as results_util
 import src.utils.import_util as imports
+import src.utils.graphic_util as graphic_util
 
 
 # Press Shift+F10 to execute it or replace it with your code.
@@ -33,6 +34,9 @@ def main():
             # finalmente um loop de 20 vezes executando treinamento e predicao para cada caso
             for i in range(20):
                 execute(model)
+            # salvando os graficos
+            graphic_util.plot_graphic_train_valid()
+            graphic_util.plot_confusion_matrix()
 
     return 0
 
@@ -55,17 +59,23 @@ def execute(model):
 
 
 def __set_path_files(dado, particao):
+    # Dataset
     imports.SEQ_LENGTH = dado['seq_length']
     imports.MATRIX_EMBEDDING = imports.MATRIX_EMBEDDING_BASE.format(dado['cut'], dado['seq_length'])
     imports.POSITIVE_TWEETS_PATH_PROCESS = imports.POSITIVE_TWEETS_PATH_PROCESS_BASE.format(dado['cut'],
                                                                                             dado['seq_length'])
     imports.NEGATIVE_TWEETS_PATH_PROCESS = imports.NEGATIVE_TWEETS_PATH_PROCESS_BASE.format(dado['cut'],
                                                                                             dado['seq_length'])
+    # Resultados
     imports.ACC_TRAIN_PATH = imports.ACC_TRAIN_PATH_BASE.format(dado['cut'], particao['train'])
     imports.ACC_VALID_PATH = imports.ACC_VALID_PATH_BASE.format(dado['cut'], particao['train'])
     imports.LOSS_TRAIN_PATH = imports.LOSS_TRAIN_PATH_BASE.format(dado['cut'], particao['train'])
     imports.LOSS_VALID_PATH = imports.LOSS_VALID_PATH_BASE.format(dado['cut'], particao['train'])
     imports.RESULT_PATH = imports.METRIC_PATH_BASE.format(dado['cut'], particao['train'])
+
+    # Graficos
+    imports.GRAPHIC_TRAIN = imports.GRAPHIC_TRAIN_BASE.format(dado['cut'], particao['train'])
+    imports.MATRIX_CONFUSION = imports.MATRIX_CONFUSION_BASE.format(dado['cut'], particao['train'])
     return
 
 

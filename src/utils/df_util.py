@@ -46,3 +46,33 @@ def cut_dataset(df_pos, df_neg, train):
 
     return df_train, df_valid, df_test
 
+def get_datas_graphic_train_valid():
+    df_acc_train = pd.read_csv(imports.ACC_TRAIN_PATH)
+    df_acc_valid = pd.read_csv(imports.ACC_VALID_PATH)
+    df_loss_train = pd.read_csv(imports.LOSS_TRAIN_PATH)
+    df_loss_valid = pd.read_csv(imports.LOSS_VALID_PATH)
+
+    lst_acc_train = __get_lst_mean_colums(df_acc_train)
+    lst_acc_valid = __get_lst_mean_colums(df_acc_valid)
+    lst_loss_train = __get_lst_mean_colums(df_loss_train)
+    lst_loss_valid = __get_lst_mean_colums(df_loss_valid)
+
+    return lst_acc_train, lst_acc_valid, lst_loss_train, lst_loss_valid
+
+
+def __get_lst_mean_colums(df):
+    # limpar as colunas vazias
+    df = df.dropna()
+    # pegando as medias das colunas
+    lst = []
+    for i in df.columns:
+        lst.append(df[i].mean())
+    return lst
+
+def get_data_confusion_matrix():
+    header = ['DateTime', 'n_hidden', 'learning_rate', 'drop_1', 'inicializador', 'drop_recorrente', 'ativação', 'loss',
+              'otimizador', 'n_epocas', 'batch_size', 'len_train', 'len_valid', 'acc_teste', 'true_neg', 'false_pos',
+              'false_neg', 'true_pos', 'precision', 'recall', 'f1', 'IoU', 'embedding']
+    df_m = pd.read_csv(imports.RESULT_PATH, names=header)
+    df_m = df_m.dropna()
+    return np.array([[int(df_m.true_neg.mean()), int(df_m.false_pos.mean())], [int(df_m.false_neg.mean()), int(df_m.true_pos.mean())]])
