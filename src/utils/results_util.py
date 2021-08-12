@@ -1,6 +1,6 @@
 import csv
 import pandas as pd
-import src.utils.import_util as imports
+import import_util as imports
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, accuracy_score
 
 
