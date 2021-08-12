@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.utils import plot_model
 
 import utils.import_util as imports
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import Embedding, LSTM, Dropout, Activation, Dense, GRU
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, LSTM, Dropout, Activation, Dense, GRU
 from tensorflow.keras.optimizers import SGD
 np.random.seed(1)
 
