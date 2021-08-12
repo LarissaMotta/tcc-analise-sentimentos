@@ -1,5 +1,5 @@
 import os
-os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin/'
+# os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin/'
 import numpy as np
 from time import time
 import tensorflow as tf
@@ -55,7 +55,7 @@ def training(df, df2, matrix_embedding, seq_length, hyperparams):
                   optimizer=__get_optimizer(hyperparams),
                   metrics=['accuracy'])
 
-    plot_model(model, to_file=imports.DATAS_PATH + '/resultados/model_plot.png', show_shapes=True, show_layer_names=True)
+    # plot_model(model, to_file=imports.DATAS_PATH + '/resultados/model_plot.png', show_shapes=True, show_layer_names=True)
     print(model.summary())
     training_start_time = time()
     net = model.fit(df.Vetores.tolist(), df.Polaridade.tolist(), batch_size=batch_size, epochs=hyperparams.n_epochs,
