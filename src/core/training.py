@@ -92,19 +92,19 @@ def training(df, df2, matrix_embedding, seq_length, hyperparams):
 
 def __get_optimizer(hyperparams):
     if hyperparams.optimizer == 'adam':
-        return tf.keras.optimizers.Adam(learning_rate=hyperparams.lr, beta_1=0.9, beta_2=0.999,
+        return tf.python.keras.optimizers.Adam(learning_rate=hyperparams.lr, beta_1=0.9, beta_2=0.999,
                                                     epsilon=1e-08, decay=0.0, amsgrad=False, clipnorm=1.5)
     elif hyperparams.optimizer == 'adagrad':
-        return tf.keras.optimizers.Adagrad(learning_rate=hyperparams.lr,  initial_accumulator_value=0.1,
+        return tf.python.keras.optimizers.Adagrad(learning_rate=hyperparams.lr,  initial_accumulator_value=0.1,
                                             epsilon=1e-07, name='Adagrad', clipnorm=0.1)
     elif hyperparams.optimizer == 'sgd':
-        return tf.keras.optimizers.SGD(learning_rate=hyperparams.lr, momentum=0.0, nesterov=False, name='SGD')
+        return tf.python.keras.optimizers.SGD(learning_rate=hyperparams.lr, momentum=0.0, nesterov=False, name='SGD')
 
     elif hyperparams.optimizer == 'rsm':
-        return tf.keras.optimizers.RMSprop(lr=hyperparams.lr, clipnorm=1)
+        return tf.python.keras.optimizers.RMSprop(lr=hyperparams.lr, clipnorm=1)
 
     elif hyperparams.optimizer == 'adadelta':
-        return tf.keras.optimizers.Adadelta(learning_rate=hyperparams.lr, rho=hyperparams.rho,
+        return tf.python.keras.optimizers.Adadelta(learning_rate=hyperparams.lr, rho=hyperparams.rho,
                                             epsilon=1e-07, name='Adadelta', clipnorm=1.5)
 
 
