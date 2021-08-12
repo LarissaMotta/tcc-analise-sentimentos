@@ -1,5 +1,5 @@
 from sklearn.model_selection import train_test_split
-import import_util as imports
+import utils.import_util as imports
 import numpy as np
 import pandas as pd
 
