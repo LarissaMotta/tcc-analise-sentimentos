@@ -9,8 +9,8 @@ class hiperparams:
         self.drop_recurrent = 0.08
         self.n_epochs = 18
         self.batch_size = 32
-        self.len_train = 0.80
-        self.len_valid = 0.10
+        self.len_train = 0.70
+        self.len_valid = 0.15
         self.n_embedding = 400
 
         # self.initializer = 'he'
