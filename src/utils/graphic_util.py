@@ -1,7 +1,7 @@
 import seaborn as sn
 import matplotlib.pyplot as plt
-import src.utils.import_util as imports
-import src.utils.df_util as df_util
+import utils.import_util as imports
+import utils.df_util as df_util
 
 
 def plot_confusion_matrix():

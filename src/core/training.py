@@ -1,14 +1,11 @@
-import os
-os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin/'
 import numpy as np
 from time import time
 import tensorflow as tf
-import matplotlib.pyplot as plt
 from tensorflow.keras.utils import plot_model
 
-import src.utils.import_util as imports
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import Embedding, LSTM, Dropout, Activation, Dense, GRU
+import utils.import_util as imports
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, LSTM, Dropout, Activation, Dense, GRU
 np.random.seed(1)
 
 
@@ -51,29 +48,6 @@ def training(df, df2, matrix_embedding, seq_length, hyperparams):
     print("Training time finished.\n%d epochs in %12.2f" % (hyperparams.n_epochs,
                                                             training_end_time - training_start_time))
     model.save('LSTM.h5')
-
-    # Plot accuracy
-    # plt.subplot(211)
-    # plt.plot(net.history['accuracy'])
-    # plt.plot(net.history['val_accuracy'])
-    # plt.title('Accuracy' + ' LSTM: opt=' + str(hyperparams.optimizer) + ' lr=' + str(hyperparams.lr))
-    # plt.ylabel('Accuracy')
-    # plt.xlabel('Epoch')
-    # plt.legend(['Train', 'Validation'], loc='upper left')
-    #
-    # # Plot loss
-    # plt.subplot(212)
-    # plt.plot(net.history['loss'])
-    # plt.plot(net.history['val_loss'])
-    # plt.title('Loss' + ' LSTM: loss=' + str(hyperparams.loss))
-    # plt.ylabel('Loss')
-    # plt.xlabel('Epoch')
-    # plt.legend(['Train', 'Validation'], loc='upper right')
-    #
-    # plt.tight_layout(h_pad=1.0)
-    # date = hyperparams.date_now.replace('/', '').replace(':', '').replace(' ', '_')
-    # plt.savefig(imports.GRAPHIC_TRAIN + date + '.png')
-    # plt.show()
 
     return net, batch_size
 
