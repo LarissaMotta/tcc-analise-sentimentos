@@ -131,5 +131,16 @@ dmypy.json
 .idea
 
 # Removing compact files
-src/datas/
+src/datas/adjetives/
+src/datas/figures/
+src/datas/process_data_0/
+src/datas/process_data_1/
+src/datas/process_data_2/
+src/datas/process_data_sw_lm_0/
+src/datas/process_data_sw_lm_1/
+src/datas/process_data_sw_lm_2/
+src/datas/resultados/
+src/datas/predict_dataset.csv
+src/datas/*.zip
 src/*.h5
+
