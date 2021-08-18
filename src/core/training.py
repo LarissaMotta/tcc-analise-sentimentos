@@ -1,9 +1,7 @@
 import numpy as np
 from time import time
 import tensorflow as tf
-from tensorflow.keras.utils import plot_model
 
-import utils.import_util as imports
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, LSTM, Dropout, Activation, Dense, GRU
 np.random.seed(1)
@@ -39,7 +37,7 @@ def training(df, df2, matrix_embedding, seq_length, hyperparams):
                   optimizer=__get_optimizer(hyperparams),
                   metrics=['accuracy'])
 
-    plot_model(model, to_file=imports.DATAS_PATH + '/resultados/model_plot.png', show_shapes=True, show_layer_names=True)
+
     print(model.summary())
     training_start_time = time()
     net = model.fit(df.Vetores.tolist(), df.Polaridade.tolist(), batch_size=batch_size, epochs=hyperparams.n_epochs,
