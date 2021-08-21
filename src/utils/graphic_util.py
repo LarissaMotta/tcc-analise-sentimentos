@@ -18,8 +18,10 @@ def create_adjetives_cloud():
 
     stylecloud.gen_stylecloud(text=pos_words,
                               icon_name="fas fa-thumbs-up",
+                              collocations=False,
                               output_name=file_pos)
 
     stylecloud.gen_stylecloud(text=neg_words,
                               icon_name="fas fa-thumbs-down",
+                              collocations=False,
                               output_name=file_neg)
