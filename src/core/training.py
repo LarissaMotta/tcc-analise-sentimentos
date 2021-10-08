@@ -3,7 +3,7 @@ from time import time
 import tensorflow as tf
 
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Embedding, LSTM, Dropout, Activation, Dense, GRU
+from tensorflow.keras.layers import Embedding, LSTM, Dropout, Activation, Dense
 np.random.seed(1)
 
 

@@ -35,7 +35,8 @@ def main():
             for i in range(20):
                 execute(model)
             # salvando os graficos
-            graphic_util.plot_graphic_train_valid()
+            legend_graphic = 'P1' if (particao['train'] == 0.7) else 'P2'
+            graphic_util.plot_graphic_train_valid(legend_graphic)
             graphic_util.plot_confusion_matrix()
 
     return 0
@@ -74,8 +75,8 @@ def __set_path_files(dado, particao):
     imports.RESULT_PATH = imports.METRIC_PATH_BASE.format(dado['cut'], particao['train'])
 
     # Graficos
-    imports.GRAPHIC_TRAIN = imports.GRAPHIC_TRAIN_BASE.format(dado['cut'], particao['train'])
-    imports.MATRIX_CONFUSION = imports.MATRIX_CONFUSION_BASE.format(dado['cut'], particao['train'])
+    imports.GRAPHIC_TRAIN = imports.GRAPHIC_TRAIN_BASE.format(dado['cut'], str(int(particao['train'] * 100)))
+    imports.MATRIX_CONFUSION = imports.MATRIX_CONFUSION_BASE.format(dado['cut'], str(int(particao['train'] * 100)))
     return
 
 

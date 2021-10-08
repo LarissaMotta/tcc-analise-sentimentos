@@ -140,6 +140,7 @@ src/datas/process_data_sw_lm_0/
 src/datas/process_data_sw_lm_1/
 src/datas/process_data_sw_lm_2/
 src/datas/resultados/
+src/datas/resultados_experiment/
 src/datas/predict_dataset.csv
 src/datas/*.zip
 src/*.h5
